@@ -1,0 +1,13 @@
+scalar Date
+
+type User {
+  id: ID,
+  name: String,
+  imageUrl: String,
+  email: String,
+  password: String
+  createdAt: Date,
+}
+type Query {
+  listUsers: User!
+}
