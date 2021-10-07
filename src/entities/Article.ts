@@ -1,3 +1,4 @@
+import { Exclude } from "class-transformer";
 import { Column,
   CreateDateColumn,
   Entity,
@@ -18,6 +19,7 @@ export class Article {
  @PrimaryGeneratedColumn()
  id:number;
 
+ @Exclude()
  @Column()
  user_id: number;
 
@@ -25,6 +27,7 @@ export class Article {
  @ManyToOne(() => User)
  user: User;
 
+ @Exclude()
  @Column()
  category_id: number;
 

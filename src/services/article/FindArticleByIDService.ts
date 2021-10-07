@@ -1,3 +1,4 @@
+import { classToPlain } from "class-transformer";
 import { getCustomRepository } from "typeorm";
 import { ArticleRepository } from "../../repositories/ArticleRepository";
 
@@ -12,13 +13,6 @@ export class FindArticleByIDService {
       relations: ['user', 'category', 'tags']
     });
 
-      delete article.user.email;
-      delete article.user.password;
-      delete article.user.admin;
-      delete article.user.createdAt;
-      delete article.user_id;
-      delete article.category_id;
-
-    return article;
+    return classToPlain(article);
   }
 }

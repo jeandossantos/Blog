@@ -3,6 +3,8 @@ import { Router } from "express";
 import { CreateArticleController } from "./controllers/article/CreateArticleController";
 import { DeleteArticleController } from "./controllers/article/DeleteArticleController";
 import { FindArticleByIDController } from "./controllers/article/FindArticleByIDController";
+import { ListArticlesCategoryController } from "./controllers/article/ListArticlesByCategoryController";
+import { ListArticlesByTagController } from "./controllers/article/ListArticlesByTagController";
 import { ListArticlesController } from "./controllers/article/ListArticlesController";
 import { UpdateArticleController } from "./controllers/article/UpdateArticleController";
 import { CreateCategoryController } from "./controllers/category/CreateCategoryController";
@@ -33,9 +35,11 @@ routes.delete('/tags/:id', new DeleteTagController().handle);
 
 // articles
 routes.post('/articles', new CreateArticleController().handle);
-routes.put('/articles/:id', new UpdateArticleController().handle);
 routes.get('/articles', new ListArticlesController().handle);
 routes.get('/articles/:id', new FindArticleByIDController().handle);
+routes.get('/articles/:id/category', new ListArticlesCategoryController().handle);
+routes.get('/articles/:id/tag', new ListArticlesByTagController().handle);
+routes.put('/articles/:id', new UpdateArticleController().handle);
 routes.delete('/articles/:id', new DeleteArticleController().handle);
 
 export default routes;
